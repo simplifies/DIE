@@ -13,10 +13,10 @@ git clone https://github.com/LocalsGitHub/DIE.git
 cd DIE
 
 Windows:
-pip install -r requirements.txt
+pip install requests
 
 Linux:
-pip3 install -r requirements.txt
+pip3 install requests
 
 Windows:
 py main.py
