@@ -18,12 +18,7 @@ def main():
 	aboutBilling = requests.get(billing, headers={"Authorization": token})
 	aboutGuilds = requests.get(guilds, headers={"Authorization": token})
 	aboutConnections = requests.get(connections, headers={"Authorization": token})
-	global billingInfo
 	billingInfo = aboutBilling.text
-
-	if aboutBilling.text == "[]":
-		billingInfo == "{'hasBilling': false}"
-
 	loads = json.loads(aboutUser.text)
 	userDump = json.dumps(loads, indent = 2)
 	loads2 = json.loads(billingInfo)
@@ -32,7 +27,6 @@ def main():
 	guildDump = json.dumps(loads3, indent = 2)
 	loads4 = json.loads(aboutConnections.text)
 	connectionsDump = json.dumps(loads4, indent = 2)
-
 	print(f"---User Info---{userDump}\n---Billing Info---{billingDump}\n---Guild Info---{guildDump}\n---Connections Info---{connectionsDump}")
 	response = input("\n\n\nSave to txt file? (y/n): ")
 	if response == "y":
@@ -43,5 +37,7 @@ def main():
 		exit()
 	else:
 		print("please enter a valid value.")
-
-main()
+try:
+	main()
+except Exception as e:
+	print(e)
